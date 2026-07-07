@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>UGC World — Free Live Class Registration</title>
+<style>
+  :root{
+    --accent:#c13ec1;      /* magenta */
+    --accent2:#e86fd6;     /* pink   */
+    --gold:#e86fd6;
+    --ink:#f3ecfa;
+    --muted:#b3a4c8;
+    --dim:#8a7ca3;
+    --black:#1c0f38;       /* deep purple hero (not black) */
+    --panel:#24123f;
+    --panel2:#2c1749;
+    --line:#3b2560;
+    --stat:#e86fd6;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;overflow-x:hidden;width:100%;max-width:100%}
+  body{background:#f7f2fc;color:var(--ink);
+    font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Helvetica,sans-serif;
+    -webkit-font-smoothing:antialiased}
+  .page{max-width:1120px;margin:0 auto}
+  img{max-width:100%;display:block}
+
+  /* ---------- 1. PRESS BAR (white) ---------- */
+  .press{background:#fff;text-align:center;padding:30px 20px 26px}
+  .brandmark{font-size:22px;font-weight:900;letter-spacing:.14em;color:#1a1420}
+  .press .cap{font-size:11px;letter-spacing:.28em;color:#9a93a5;font-weight:700;margin:16px 0 12px}
+  .press .logos{display:flex;justify-content:center;align-items:center;gap:34px;flex-wrap:wrap}
+  .press .logos span{font-size:19px;font-weight:800;color:#b7afc0;letter-spacing:.01em}
+
+  /* ---------- 2. HERO (black) ---------- */
+  .hero{background:var(--black);border-radius:28px;margin:0 12px;padding:48px 34px 40px;text-align:center;
+    box-shadow:0 30px 70px rgba(0,0,0,.18)}
+  .eyebrow{color:var(--accent2);font-weight:800;letter-spacing:.14em;font-size:13px;text-transform:uppercase;margin-bottom:18px}
+  .headline{font-size:46px;line-height:1.12;font-weight:900;letter-spacing:-.02em;color:#fff;margin:0 auto 20px;max-width:900px}
+  .headline .hi{background:linear-gradient(120deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .herosub{font-size:20px;font-weight:700;color:#d8d2e0;margin:0 auto 30px;max-width:640px}
+  .cdlabel{font-size:15px;font-weight:700;color:#e7e2ef;margin-bottom:16px}
+  .countdown{display:flex;justify-content:center;flex-wrap:wrap;gap:14px;margin-bottom:26px}
+  .cdbox{background:#f4f2f7;border-radius:16px;padding:16px 8px;min-width:96px}
+  .cdbox b{display:block;font-size:44px;font-weight:900;color:#141018;line-height:1}
+  .cdbox small{display:block;font-size:11px;letter-spacing:.18em;color:#8b8397;font-weight:700;margin-top:8px}
+  .cta{display:block;width:100%;max-width:720px;margin:0 auto;border:0;cursor:pointer;
+    background:linear-gradient(120deg,var(--accent),var(--accent2));color:#fff;
+    font-size:26px;font-weight:900;letter-spacing:-.01em;padding:22px;border-radius:60px;
+    box-shadow:0 14px 34px rgba(193,62,193,.42);transition:transform .1s ease}
+  .cta:active{transform:scale(.99)}
+  .trust{display:flex;justify-content:center;align-items:center;gap:16px;margin-top:24px;flex-wrap:wrap}
+  .avatars{display:flex}
+  .avatars i{width:40px;height:40px;border-radius:50%;border:2px solid #1c0f38;margin-left:-12px;background:#7a5aa0}
+  .avatars i:first-child{margin-left:0}
+  .stars{color:var(--gold);font-size:20px;letter-spacing:2px}
+  .trust .t{font-size:13px;font-weight:800;color:#cfc8da;letter-spacing:.02em}
+  .trust .t b{color:var(--gold)}
+
+  /* ---------- 3. RESULTS BAND (dark) ---------- */
+  .darkwrap{background:linear-gradient(180deg,#1c0f38,#241148);padding:26px 12px 8px;margin-top:22px;border-radius:28px 28px 0 0}
+  .results{background:linear-gradient(135deg,#2a1550,#331a5e);border:1px solid #3f2668;border-radius:22px;
+    padding:34px 34px;display:grid;grid-template-columns:1fr 1.4fr;gap:24px;align-items:center;
+    box-shadow:0 0 60px rgba(193,62,193,.1)}
+  .results .rl .eb{color:var(--accent);font-size:12px;letter-spacing:.24em;font-weight:800;text-transform:uppercase}
+  .results .rl h2{font-size:34px;font-weight:900;letter-spacing:-.02em;margin:12px 0 0;color:#fff;line-height:1.1}
+  .statrow{display:flex;gap:22px}
+  .statrow .st{flex:1;padding-left:22px;border-left:1px solid #402968}
+  .statrow .st:first-child{border-left:0;padding-left:0}
+  .statrow .st b{display:block;font-size:34px;font-weight:900;color:#fff;letter-spacing:-.01em;line-height:1}
+  .statrow .st span{font-size:13.5px;color:#c1b2d6;line-height:1.35;display:block;margin-top:8px}
+  .disc{color:#9a8bb8;font-size:12px;padding:16px 12px 0;max-width:1120px}
+
+  /* ---------- 4. DISCOVER BAND (dark) ---------- */
+  .discoverwrap{background:linear-gradient(180deg,#241148,#1c0f38);padding:8px 12px 46px;border-radius:0 0 28px 28px}
+  .discover{background:#251149;border:1px solid var(--line);border-radius:22px;padding:40px 38px;
+    display:grid;grid-template-columns:1.3fr .9fr;gap:34px;align-items:center;overflow:hidden}
+  .discover h2{font-size:34px;font-weight:900;letter-spacing:-.02em;color:#fff;margin:0 0 24px;line-height:1.12}
+  .discover h2 .free{color:var(--gold)}
+  ul.disc-b{list-style:none;padding:0;margin:0}
+  ul.disc-b li{position:relative;padding-left:40px;margin-bottom:20px;font-size:17px;font-weight:700;color:#e6e1ef;line-height:1.4}
+  ul.disc-b li::before{content:"✓";position:absolute;left:0;top:1px;width:24px;height:24px;border-radius:50%;
+    background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;font-size:13px;font-weight:900;
+    display:grid;place-items:center}
+  .hostcard{position:relative;border-radius:16px;overflow:hidden;min-height:340px;background:#2c1749;
+    display:flex;align-items:flex-end;border:1px solid var(--line)}
+  .hostcard img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .hostph{position:absolute;inset:0;display:grid;place-items:center;color:#6c6480;font-size:13px;text-align:center;padding:20px}
+  .hostcard .name{position:relative;z-index:2;width:100%;padding:16px;
+    background:linear-gradient(180deg,transparent,rgba(0,0,0,.85))}
+  .hostcard .name .sig{font-size:22px;font-style:italic;color:#fff;font-family:Georgia,serif}
+  .hostcard .name .role{font-size:14px;font-weight:800;color:#fff;margin-top:2px}
+
+  .foot{text-align:center;color:#9a93a5;font-size:12px;padding:26px 20px 50px}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media(max-width:820px){
+    .hero{padding:34px 20px 30px;margin:0 8px;border-radius:22px}
+    .eyebrow{font-size:15px;margin-bottom:16px}
+    .headline{font-size:28px;line-height:1.18}
+    .herosub{font-size:15px;line-height:1.5;max-width:340px;margin-bottom:22px}
+    .countdown{gap:8px}
+    .cdbox{min-width:0;flex:1 1 64px;padding:12px 2px}
+    .cdbox b{font-size:28px}
+    .cdbox small{font-size:9px;letter-spacing:.12em}
+    .cta{font-size:19px;padding:18px}
+    .press .logos{gap:20px}.press .logos span{font-size:15px}
+    .results{grid-template-columns:1fr;padding:24px 18px;gap:16px}
+    .results .rl h2{font-size:24px}
+    .statrow{flex-direction:column;gap:0}
+    .statrow .st{padding:14px 0;border-left:0;border-top:1px solid #402968}
+    .statrow .st:first-child{border-top:0;padding-top:0}
+    .statrow .st b{font-size:26px}.statrow .st span{font-size:13px}
+    .discover{grid-template-columns:1fr;padding:28px 20px;gap:24px}
+    .discover h2{font-size:26px}
+    ul.disc-b li{font-size:15px;padding-left:34px}
+    .hostcard{min-height:380px;order:2}
+  }
+  @media(max-width:420px){
+    .headline{font-size:26px}
+    .cdbox b{font-size:26px}
+  }
+  body{padding-bottom:82px}
+  .stickycta{position:fixed;left:0;right:0;bottom:0;z-index:999;padding:10px 14px;background:rgba(247,242,252,.94);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-top:1px solid #e2d3f2;box-shadow:0 -8px 22px rgba(80,40,110,.15)}
+  .stickycta button{width:100%;max-width:600px;margin:0 auto;display:block;border:0;cursor:pointer;background:linear-gradient(120deg,var(--accent),var(--accent2));color:#fff;border-radius:40px;padding:15px;font-size:16px;font-weight:800;box-shadow:0 8px 20px rgba(193,62,193,.35)}
+</style>
+</head>
+<body>
+
+<!-- ============================================================= -->
+<!--  ⬇⬇⬇   EDIT ALL YOUR COPY HERE — NOTHING ELSE NEEDS TOUCHING   -->
+<!--  Change the headline, sub, bullets, stats, times, CTA etc.     -->
+<!--  Everything on the page is driven by this one block.           -->
+<!-- ============================================================= -->
+<script>
+const CONFIG = {
+
+  /* ---- BRAND / PRESS BAR ---- */
+  brandName:        "",     // top wordmark. Leave "" to hide it (drop a logo image in the press bar instead).
+  pressCaption:     "THE BRANDS PAYING OUR CREATORS",
+  pressLogos: ["Adobe", "Photoshop", "Perplexity", "Canva", "Cloud9", "BeReal"],
+
+  /* ---- HERO (the money section) ---- */
+  eyebrow:          "100% FREE LIVE CLASS REVEALS…",
+
+  // THE HEADLINE. Wrap the phrase you want highlighted in {…}.
+  headline:         "How I went from a burnt-out $14/hr Walmart worker to making {$15k/month in brand deals} in under 6 months, whilst traveling the world",
+
+  herosub:          "Even if you have no followers or have never recorded content for brands before.",
+
+  // Live countdown — set the exact class date/time. Rolls forward one week if it passes.
+  countdownLabel:   "Live on Sunday, July 11, 2026 at 2:00 PM EST",
+  eventISO:         "2026-07-11T14:00:00-05:00",
+
+  ctaText:          "YES! SAVE MY SEAT",
+  trustText:        "TRUSTED BY 1,000+ CREATORS",
+
+  /* ---- VERIFIED RESULTS BAND ---- */
+  resultsEyebrow:   "VERIFIED STUDENT OUTCOMES",
+  resultsHeading:   "Results that speak for themselves.",
+  stats: [
+    { num: "$2.3M+",  label: "In brand deals landed by our creators" },
+    { num: "$3.2k",   label: "Average monthly brand retainer" },
+    { num: "7 days",  label: "Average time from complete beginner to first paid brand deal" },
+  ],
+  disclaimer:       "*Based on verified student results. Individual performance varies.",
+
+  /* ---- 'YOU'LL DISCOVER' BAND ---- */
+  // Wrap words in {…} to highlight them in gold.
+  discoverHeading:  "In This {100% FREE} Class, You'll Discover…",
+  bullets: [
+    "The exact skill I used to go from $14/hour at Walmart to $14,000 in a single month without any prior experience filming content.",
+    "Why brands like Perplexity, Adobe, and Canva pay everyday people instead of influencers, and how to get on their radar this week.",
+    "How to get paid whilst you travel. The exact system to land free flights, airbnbs, and a free travel itinerary anywhere I go.",
+    "The exact strategy I used to land a $50,000/year brand deal, with less than 300 followers.",
+  ],
+  hostName:         "Gloria Stonelake",
+  hostTitle:        "Founder of UGC World",
+  hostImage:        "",   // paste a path or URL to Gloria's photo, e.g. "gloria.jpg". Leave "" for a placeholder.
+};
+/* ============================================================= */
+/*  ⬆⬆⬆   STOP EDITING HERE. Layout below builds from CONFIG.     */
+/* ============================================================= */
+</script>
+
+<div class="page">
+
+  <!-- 1. PRESS BAR -->
+  <div class="press">
+    <div class="brandmark" id="brandName"></div>
+    <div class="cap" id="pressCaption"></div>
+    <div class="logos" id="pressLogos"></div>
+  </div>
+
+  <!-- 2. HERO -->
+  <div class="hero">
+    <div class="eyebrow" id="eyebrow"></div>
+    <h1 class="headline" id="headline"></h1>
+    <p class="herosub" id="herosub"></p>
+    <div class="cdlabel" id="countdownLabel"></div>
+    <div class="countdown">
+      <div class="cdbox"><b id="cd-d">00</b><small>DAYS</small></div>
+      <div class="cdbox"><b id="cd-h">00</b><small>HOURS</small></div>
+      <div class="cdbox"><b id="cd-m">00</b><small>MINUTES</small></div>
+      <div class="cdbox"><b id="cd-s">00</b><small>SECONDS</small></div>
+    </div>
+    <button class="cta" id="ctaText" onclick="document.getElementById('brandName').scrollIntoView({behavior:'smooth'})"></button>
+    <div class="trust">
+      <div class="avatars" id="avatars"></div>
+      <div class="stars">★★★★★</div>
+      <div class="t" id="trustText"></div>
+    </div>
+  </div>
+
+  <!-- 3. RESULTS BAND -->
+  <div class="darkwrap">
+    <div class="results">
+      <div class="rl">
+        <div class="eb" id="resultsEyebrow"></div>
+        <h2 id="resultsHeading"></h2>
+      </div>
+      <div class="statrow" id="statrow"></div>
+    </div>
+    <div class="disc" id="disclaimer"></div>
+  </div>
+
+  <!-- 4. DISCOVER BAND -->
+  <div class="discoverwrap">
+    <div class="discover">
+      <div>
+        <h2 id="discoverHeading"></h2>
+        <ul class="disc-b" id="bullets"></ul>
+      </div>
+      <div class="hostcard" id="hostcard">
+        <div class="hostph" id="hostph">Drop Gloria's photo here<br>(set hostImage in the config)</div>
+        <div class="name">
+          <div class="sig" id="hostName"></div>
+          <div class="role" id="hostTitle"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="foot">Free to register. Spots fill fast. © UGC World.</div>
+</div>
+
+<script>
+// ---- render helpers (highlight {…} spans) ----
+const hi = (s, cls) => s.replace(/\{(.+?)\}/g, `<span class="${cls}">$1</span>`);
+const set = (id, val) => { const el=document.getElementById(id); if(el) el.textContent = val; };
+
+if (CONFIG.brandName) { set('brandName', CONFIG.brandName); } else { document.getElementById('brandName').style.display = 'none'; }
+set('pressCaption', CONFIG.pressCaption);
+document.getElementById('pressLogos').innerHTML = CONFIG.pressLogos.map(l=>`<span>${l}</span>`).join('');
+
+set('eyebrow', CONFIG.eyebrow);
+document.getElementById('headline').innerHTML = hi(CONFIG.headline, 'hi');
+set('herosub', CONFIG.herosub);
+set('countdownLabel', CONFIG.countdownLabel);
+set('ctaText', CONFIG.ctaText);
+set('trustText', '');
+document.getElementById('trustText').innerHTML = 'TRUSTED BY <b>'+CONFIG.trustText.replace(/^TRUSTED BY\s*/i,'')+'</b>';
+
+// avatars (placeholder gradient circles — swap for real face images if you want)
+const grads = ['#ff8a9b','#8fb3ff','#ffd06b','#7fd6a6','#c79bff'];
+document.getElementById('avatars').innerHTML = grads.map(g=>`<i style="background:${g}"></i>`).join('');
+
+set('resultsEyebrow', CONFIG.resultsEyebrow);
+set('resultsHeading', CONFIG.resultsHeading);
+document.getElementById('statrow').innerHTML = CONFIG.stats.map(s=>
+  `<div class="st"><b>${s.num}</b><span>${s.label}</span></div>`).join('');
+set('disclaimer', CONFIG.disclaimer);
+
+document.getElementById('discoverHeading').innerHTML = hi(CONFIG.discoverHeading, 'free');
+document.getElementById('bullets').innerHTML = CONFIG.bullets.map(b=>`<li>${b}</li>`).join('');
+set('hostName', CONFIG.hostName);
+set('hostTitle', CONFIG.hostTitle);
+if (CONFIG.hostImage) {
+  const img = document.createElement('img'); img.src = CONFIG.hostImage; img.alt = CONFIG.hostName;
+  document.getElementById('hostcard').prepend(img);
+  document.getElementById('hostph').style.display = 'none';
+}
+
+// ---- countdown to a fixed date (rolls forward one week if it passes) ----
+function target(){
+  let t = new Date(CONFIG.eventISO); const now = new Date();
+  while (t < now) { t = new Date(t.getTime() + 7*864e5); }
+  return t;
+}
+let TGT = target();
+const pad = n => String(n).padStart(2,'0');
+function tick(){
+  let diff = Math.max(0, TGT - new Date());
+  if (diff === 0) TGT = target();
+  const d = Math.floor(diff/864e5), h = Math.floor(diff%864e5/3.6e6),
+        m = Math.floor(diff%3.6e6/6e4), s = Math.floor(diff%6e4/1e3);
+  document.getElementById('cd-d').textContent = pad(d);
+  document.getElementById('cd-h').textContent = pad(h);
+  document.getElementById('cd-m').textContent = pad(m);
+  document.getElementById('cd-s').textContent = pad(s);
+}
+tick(); setInterval(tick, 1000);
+</script>
+
+<div class="stickycta"><button id="stickyCta">Yes! Save My Seat →</button></div>
+<script>
+(function(){var s=document.getElementById('stickyCta');if(s)s.addEventListener('click',function(){var h=document.querySelector('.hero');if(h)h.scrollIntoView({behavior:'smooth'});});})();
+</script>
+</body>
+</html>
