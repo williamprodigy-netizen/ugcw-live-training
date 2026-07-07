@@ -121,9 +121,6 @@
     .headline{font-size:26px}
     .cdbox b{font-size:26px}
   }
-  body{padding-bottom:82px}
-  .stickycta{position:fixed;left:0;right:0;bottom:0;z-index:999;padding:10px 14px;background:rgba(247,242,252,.94);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-top:1px solid #e2d3f2;box-shadow:0 -8px 22px rgba(80,40,110,.15)}
-  .stickycta button{width:100%;max-width:600px;margin:0 auto;display:block;border:0;cursor:pointer;background:linear-gradient(120deg,var(--accent),var(--accent2));color:#fff;border-radius:40px;padding:15px;font-size:16px;font-weight:800;box-shadow:0 8px 20px rgba(193,62,193,.35)}
 </style>
 </head>
 <body>
@@ -303,9 +300,5 @@ function tick(){
 tick(); setInterval(tick, 1000);
 </script>
 
-<div class="stickycta"><button id="stickyCta">Yes! Save My Seat →</button></div>
-<script>
-(function(){var s=document.getElementById('stickyCta');if(s)s.addEventListener('click',function(){var h=document.querySelector('.hero');if(h)h.scrollIntoView({behavior:'smooth'});});})();
-</script>
 </body>
 </html>

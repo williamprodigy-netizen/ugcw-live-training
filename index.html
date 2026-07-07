@@ -3,15 +3,22 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>UGC World — Registration (mobile preview)</title>
+<title>UGC World — Registration</title>
+<script>
+  // Real phones get the native page directly (no iframe = no iOS weirdness).
+  // Desktop keeps the phone-frame preview below.
+  (function(){
+    var isPhone = window.innerWidth < 700 || /iPhone|iPod|Android.*Mobile|Windows Phone/i.test(navigator.userAgent);
+    if (isPhone) { window.location.replace('page.html'); }
+  })();
+</script>
 <style>
   html,body{margin:0;height:100%;background:#e7e2ef;font-family:-apple-system,Segoe UI,Roboto,sans-serif}
   .frame{display:flex;justify-content:center;align-items:stretch;min-height:100vh}
   iframe{width:100%;max-width:430px;height:100vh;border:0;background:#fff;box-shadow:0 0 50px rgba(60,30,80,.22)}
-  @media(min-width:460px){ iframe{border-radius:0} }
 </style>
 </head>
 <body>
-  <div class="frame"><iframe src="page.html" title="UGC World registration (mobile)"></iframe></div>
+  <div class="frame"><iframe src="page.html" title="UGC World registration (mobile preview)"></iframe></div>
 </body>
 </html>
